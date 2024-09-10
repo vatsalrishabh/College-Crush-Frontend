@@ -17,21 +17,24 @@ const Bottom = () => {
   return (
     <div className='bg-gray-900 h-[8vh] flex justify-around items-center text-white pb-5'>
     
-    <Link to="/swipep">
+    <Link to="/dash">
       <div onClick={() => handleIconClick('whatshot')}>
         <WhatshotIcon sx={{ color: activeIcon === 'whatshot' ? '#ff4458' : 'gray', fontSize: 34 }} />
       </div>
       </Link>
 
-
+    <Link to="../TorD">
       <div onClick={() => handleIconClick('emojiEvents')}>
         <EmojiEventsIcon sx={{ color: activeIcon === 'emojiEvents' ? '#ff4458' : 'gray', fontSize: 34 }} />
       </div>
+      </Link>
 
 
+<Link to="../stars">
       <div onClick={() => handleIconClick('star')}>
         <StarIcon sx={{ color: activeIcon === 'star' ? '#ff4458' : 'gray', fontSize: 34 }} />
       </div>
+      </Link>
 
 <Link to="../message">
       <div onClick={() => handleIconClick('forum')}>

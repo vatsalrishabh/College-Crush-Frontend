@@ -12,6 +12,8 @@ import CreateCanvas from "./Components/CreateCanvas";
 import UserInMessContainer from "./Components/UserInMessContainer";
 import UserInMatchContainer from "./Components/UserInMatchContainer";
 import SpecificInMessContainer from "./Components/SpecificInMessContainer";
+import Stars from "./Components/Stars";
+import TruthorDare from "./Components/TruthorDare";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -79,10 +81,40 @@ function App() {
                 <Top />
                 <Mid />
                 <Bottom />
-              </>:""
+              </>:<>  <LoginCanvas /></>
             }
            
           />
+
+
+<Route
+            path="/stars"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                <Top />
+              <Stars/>
+                <Bottom />
+              </>:<>  <LoginCanvas /></>
+            }
+           
+          />
+
+
+
+<Route
+            path="/TorD"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                <Top />
+              <TruthorDare/>
+                <Bottom />
+              </>:<>  <LoginCanvas /></>
+            }
+           
+          />
+
 
 
 
@@ -95,7 +127,7 @@ function App() {
                 <Top />
                <UserInMatchContainer/>
                 <Bottom />
-              </>:""
+              </>:<>  <LoginCanvas /></>
             }
            
           />
@@ -110,7 +142,7 @@ function App() {
                 <Top />
                <UserInMessContainer/>
                 <Bottom />
-              </>:""
+              </>:<>  <LoginCanvas /></>
             }
            
           />
@@ -124,7 +156,7 @@ function App() {
                 {/* <Top /> */}
                <SpecificInMessContainer/>
                 {/* <Bottom /> */}
-              </>:""
+              </>: <>  <LoginCanvas /></>
             }
            
           />
