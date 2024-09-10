@@ -9,6 +9,9 @@ import Loader from "./Components/Loader";
 import LoginCanvas from "./Components/LoginCanvas";
 import ForgotCanvas from "./Components/ForgotCanvas";
 import CreateCanvas from "./Components/CreateCanvas";
+import UserInMessContainer from "./Components/UserInMessContainer";
+import UserInMatchContainer from "./Components/UserInMatchContainer";
+import SpecificInMessContainer from "./Components/SpecificInMessContainer";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -55,7 +58,7 @@ function App() {
           />
 
 
-<Route
+{/* <Route
             path="/create"
             element={
               <>
@@ -64,7 +67,7 @@ function App() {
                 <Bottom />
               </>
             }
-          />
+          /> */}
 
 
 
@@ -80,6 +83,53 @@ function App() {
             }
            
           />
+
+
+
+
+<Route
+            path="/matches"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                <Top />
+               <UserInMatchContainer/>
+                <Bottom />
+              </>:""
+            }
+           
+          />
+
+
+
+<Route
+            path="/message"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                <Top />
+               <UserInMessContainer/>
+                <Bottom />
+              </>:""
+            }
+           
+          />
+
+
+<Route
+            path="/message/user/:email"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                {/* <Top /> */}
+               <SpecificInMessContainer/>
+                {/* <Bottom /> */}
+              </>:""
+            }
+           
+          />
+
+
 
 
 

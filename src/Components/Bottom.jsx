@@ -33,10 +33,11 @@ const Bottom = () => {
         <StarIcon sx={{ color: activeIcon === 'star' ? '#ff4458' : 'gray', fontSize: 34 }} />
       </div>
 
-
+<Link to="../message">
       <div onClick={() => handleIconClick('forum')}>
         <ForumIcon sx={{ color: activeIcon === 'forum' ? '#ff4458' : 'gray', fontSize: 34 }} />
       </div>
+      </Link>
 
       
     </div>
