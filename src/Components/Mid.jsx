@@ -26,7 +26,10 @@ const Mid = () => {
   return (
     <div className='h-[84vh]'>
 
+     
 
+
+{/* all the list only */}
       <div className="card bg-gray-900 h-full text-white p-2">
         
         {/* 1st horizontals section starts */}
@@ -80,6 +83,9 @@ const Mid = () => {
         {/* 4th horizontal section ends */}
         
       </div>
+{/* all the list ends */}
+
+
     </div>
   );
 };

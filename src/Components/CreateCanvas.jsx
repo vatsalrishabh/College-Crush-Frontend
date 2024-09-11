@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
+import { BaseUrl } from "./BaseUrl";
 import "./LoginCanvas.css"; // Ensure you import your CSS file for styling
+import { SuccessSnackbar } from "./Snackbars";
 
 const CreateCanvas = () => {
   const [removeModalBlur, setModalBlur] = useState(""); // Initial state: modal is visible
@@ -19,24 +21,7 @@ const CreateCanvas = () => {
       <div className={`modal ${removeModalBlur}`}>
         {/* ONly the close button starts */}
         <div className="closebutton flex justify-end">
-          <button type="button" className="close-button" onClick={handleModalBlur}>
-            <svg
-              className="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span className="sr-only">Close modal</span>
-          </button>
+        
         </div>
         {/* ONly the close button ends */}
 
@@ -54,6 +39,8 @@ const CreateCanvas = () => {
         </div>
         <div className="modal-body">
           <form className="space-y-4" action="#">
+
+{/* collegemail  starts*/}
             <div>
               <label
                 htmlFor="email"
@@ -70,7 +57,10 @@ const CreateCanvas = () => {
                 required
               />
             </div>
-            {/* <div>
+{/* college mail ends */}
+
+
+            <div>
               <label
                 htmlFor="password"
                 className="block mb-2 text-sm font-medium text-gray-900"
@@ -85,7 +75,9 @@ const CreateCanvas = () => {
                 className="input-field"
                 required
               />
-            </div> */}
+            </div>
+
+
             <div className="flex justify-between">
               <div className="flex items-start">
                 <div className="flex items-center h-5">
@@ -128,6 +120,8 @@ const CreateCanvas = () => {
         </div>
       </div>
       {/* sign in modal ends */}
+
+      <SuccessSnackbar/>
     </div>
   );
 };

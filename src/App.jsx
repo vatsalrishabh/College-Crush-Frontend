@@ -17,7 +17,7 @@ import TruthorDare from "./Components/TruthorDare";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [loggedInUser, setLoggedInUser] = useState({isLoggedIn:true});
+  const [loggedInUser, setLoggedInUser] = useState({isLoggedIn:false});
 
 
   return (

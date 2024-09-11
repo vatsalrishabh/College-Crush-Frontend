@@ -1,0 +1,80 @@
+/* TruthorDare.css */
+
+/* Container styles */
+.Truth-or-Dare {
+    background-color: #1a202c; /* Dark background */
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  /* Animated text */
+  .animated-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    animation: fadeInOut 3s infinite;
+  }
+  
+  /* Invite section */
+  .invite {
+    margin-top: 2rem;
+  }
+  
+  /* Fade-in effect */
+  .fade-in {
+    animation: fadeIn 2s ease-out;
+  }
+  
+  /* Invite text styles */
+  .invite-text {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeInText 2s forwards;
+  }
+  
+  /* Button styles */
+  .start-button {
+    background-color: #fe5b3b; /* Orange color */
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-button:hover {
+    background-color: #fe2c73; /* Pink color */
+  }
+  
+  /* Keyframe animations */
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+   
