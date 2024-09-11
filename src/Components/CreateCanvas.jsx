@@ -26,6 +26,15 @@ const CreateCanvas = () => {
         {/* ONly the close button ends */}
 
         <HorizontalLinearStepper/>
+
+
+        Click here to goto :-
+        <Link to="../home"
+                href="forgotPass"
+                className="text-sm text-blue-700 hover:underline dark:text-blue-500"
+              >
+               Login Page
+        </Link>
       </div>
       {/* sign in modal ends */}
     </div>
