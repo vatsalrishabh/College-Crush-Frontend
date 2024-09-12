@@ -78,7 +78,7 @@ export default function HorizontalLinearStepper() {
       formData.append('password', password);
       formData.append('otp', otp);
 
-      const response = await fetch('http://localhost:3000/api/students/verifyOtp', {
+      const response = await fetch(`${BaseUrl}api/students/verifyOtp`, {
         method: 'POST',
         body: formData,
       });
