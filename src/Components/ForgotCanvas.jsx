@@ -59,6 +59,7 @@ const ForgotCanvas = () => {
         setSnackbar({ open: true, message: "Password updated successfully!", severity: "success" });
         setTimeout(()=>{
           navigate("../home");
+          console.log("")
         },3000);
         // Add any additional logic (e.g., redirect to login page)
       }
