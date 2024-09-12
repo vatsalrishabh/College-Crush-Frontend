@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useAuth } from "./context/loginContext";
 
 import "./App.css";
 import Top from "./Components/Top";
@@ -16,8 +17,10 @@ import Stars from "./Components/Stars";
 import TruthorDare from "./Components/TruthorDare";
 
 function App() {
+
   const [count, setCount] = useState(0);
-  const [loggedInUser, setLoggedInUser] = useState({isLoggedIn:false});
+  const { loggedInUser } = useAuth();
+  console.log("App.jsx" +loggedInUser.isLoggedIn);
 
 // 
   return (

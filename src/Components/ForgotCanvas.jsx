@@ -5,6 +5,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import "./LoginCanvas.css"; // Ensure you import your CSS file for styling
+import { BaseUrl } from "./BaseUrl";
 
 const ForgotCanvas = () => {
   const [removeModalBlur, setModalBlur] = useState(""); // Manage modal blur
@@ -30,7 +31,7 @@ const ForgotCanvas = () => {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/students/updatePassword", { email });
+      const response = await axios.post(`${BaseUrl}api/students/updatePassword`, { email });
       if (response.status === 200) {
         setSnackbar({ open: true, message: "OTP sent successfully!", severity: "success" });
         setHideOtp(""); // Show OTP input
@@ -49,7 +50,7 @@ const ForgotCanvas = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/students/updatePasswordOtp", {
+      const response = await axios.post(`${BaseUrl}api/students/updatePasswordOtp`, {
         email,
         otp,
         password,
@@ -59,7 +60,7 @@ const ForgotCanvas = () => {
         setSnackbar({ open: true, message: "Password updated successfully!", severity: "success" });
         setTimeout(()=>{
           navigate("../home");
-          console.log("")
+         
         },3000);
         // Add any additional logic (e.g., redirect to login page)
       }
