@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BaseUrl } from './BaseUrl';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
@@ -11,8 +12,9 @@ const UserInMessContainer = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/students/");
+        const response = await axios.get(`${BaseUrl}api/students/`);
         setStudents(response.data);
+        // console.log(response.data.dp);
       } catch (error) {
         console.error('Error fetching students:', error);
       }
@@ -47,10 +49,11 @@ const UserInMessContainer = () => {
       <div className="user-list">
         {students.map(student => (
           <UserInMessage
-            key={student.id} // Ensure you use a unique key for each component
-            userId={student.id}
-            dp={student.profilePicture} // Adjust based on your actual data structure
+            key={student._id} // Ensure you use a unique key for each component
+     
+            dp={student.dp} // Adjust based on your actual data structure
             name={student.name} // Adjust based on your actual data structure
+            email={student.email}
           />
         ))}
       </div>

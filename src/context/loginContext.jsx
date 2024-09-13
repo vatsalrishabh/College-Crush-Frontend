@@ -10,14 +10,15 @@ export const AuthProvider = ({ children }) => {
     isLoggedIn: false,
     jwt: "",
     collegeEmail: "",
+    name:"",
   });
 
-  const login = (jwt, collegeEmail) => {
-    setLoggedInUser({ isLoggedIn: true, jwt, collegeEmail });
+  const login = (jwt, collegeEmail,name) => {
+    setLoggedInUser({ isLoggedIn: true, jwt, collegeEmail,name });
   };
 
   const logout = () => {
-    setLoggedInUser({ isLoggedIn: false, jwt: "", collegeEmail: "" });
+    setLoggedInUser({ isLoggedIn: false, jwt: "", collegeEmail: "",name:"" });
   };
 
   return (

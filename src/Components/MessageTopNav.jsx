@@ -7,7 +7,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 
-const MessageTopNav = () => {
+const MessageTopNav = (props) => {
   // State to handle the dropdown menu
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -32,10 +32,10 @@ const MessageTopNav = () => {
       {/* Avatar and name */}
       <div className='flex items-center'>
         <div className="avatar-holder mr-3">
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt="Remy Sharp" src={props.dp} />
         </div>
         <div className="Name-Lastseen">
-          <div className="Name font-semibold text-white">Remy Sharp</div>
+          <div className="Name font-semibold text-white">{props.name}</div>
           <div className="lastseen text-sm text-gray-200">Last seen 2 hours ago</div>
         </div>
       </div>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 
 // Badge styling for online status
@@ -35,135 +34,30 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-// Mock message data for demonstration
-const messages = [
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
+// MessageArea component
+const MessageArea = (props) => {
+  // State to hold messages
+  const [messages, setMessages] = useState([]);
+  const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser); // Get logged-in user from props
+  const [sentTo, setSentTo] = useState(props.sentTo); // Get recipient from props
 
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-  {
-    id: 1,
-    avatar: '/static/images/avatar/1.jpg',
-    name: 'John Doe',
-    message: 'Hey, how are you?',
-    side: 'left', // Represents incoming messages
-  },
-  {
-    id: 2,
-    avatar: '/static/images/avatar/2.jpg',
-    name: 'You',
-    message: 'I am good, how about you?',
-    side: 'right', // Represents outgoing messages
-  },
-];
+  // useEffect to update messages whenever props.allmessages changes
+  useEffect(() => {
+    if (props.allmessages) {
+      setMessages(props.allmessages); // Update the messages with props data
+    }
+  }, [props.allmessages]); // Trigger whenever props.allmessages changes
 
-const MessageArea = () => {
   return (
     <div className="Message-Area h-full overflow-y-auto p-4">
-
-      {messages.map((msg) => (
+      {messages.map((msg, index) => (
         <div
-          key={msg.id}
+          key={index}
           className={`chat-item flex items-start mb-4 ${
-            msg.side === 'right' ? 'justify-end' : ''
+            msg.sentFrom === loggedInUser ? 'justify-end' : ''
           }`}
         >
-          {msg.side === 'left' && (
+          {msg.sentFrom !== loggedInUser && (
             <div className="avatar-holder mr-2">
               <StyledBadge
                 overlap="circular"
@@ -178,21 +72,15 @@ const MessageArea = () => {
           <Paper
             elevation={3}
             className={`p-3 rounded-lg max-w-xs ${
-              msg.side === 'right' ? 'bg-blue-500 text-white' : 'bg-gray-300'
+              msg.sentFrom === loggedInUser ? 'bg-blue-500 text-white' : 'bg-gray-300'
             }`}
           >
             {msg.message}
           </Paper>
 
-          {msg.side === 'right' && (
+          {msg.sentFrom === loggedInUser && (
             <div className="avatar-holder ml-2">
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                variant="dot"
-              >
-                <Avatar alt={msg.name} src={msg.avatar} />
-              </StyledBadge>
+              <Avatar alt={msg.name} src={msg.avatar} />
             </div>
           )}
         </div>

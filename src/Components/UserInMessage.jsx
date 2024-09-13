@@ -6,7 +6,7 @@ const UserInMessage = (props) => {
 
 <>
 
-<Link to={`user/${props.userId}`} >
+<Link to={`user/${props.email}`} >
 <div className='user-in-message text-white flex items-center justify-between p-4 bg-[#36292a] rounded-lg shadow-lg m-1'>
       
       {/* Profile Picture */}

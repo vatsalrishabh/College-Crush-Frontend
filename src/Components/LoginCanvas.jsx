@@ -34,7 +34,7 @@ const LoginCanvas = () => {
       });
 
       if (response.status === 200) {
-        login(response.data.jwt, email); // Store JWT and email
+        login(response.data.jwt, email ,response.data.name); // Store JWT and email
         sessionStorage.setItem("jwt", response.data.token); // Assuming JWT token is in response.data.token
         setSnackbarMessage("Logged in successfully!");
         setSnackbarSeverity("success");
