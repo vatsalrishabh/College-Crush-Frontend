@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from "../context/loginContext";  // Assume you have a context to get logged-in user info
 import { BaseUrl } from './BaseUrl';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -6,22 +7,37 @@ import Badge from '@mui/material/Badge';
 import Stack from '@mui/material/Stack';
 import UserInMessage from './UserInMessage';
 
+
+
 const UserInMessContainer = () => {
-  const [students, setStudents] = useState([]);
+  const { loggedInUser } = useAuth();  // Assume context provides the logged-in user's collegeEmail
+  const [students, setStudents] = useState([]);  // State to store students and their last messages
 
   useEffect(() => {
+
+    // code for online offline lastseen using socket io
+   
+
+
+
     const fetchStudents = async () => {
       try {
-        const response = await axios.get(`${BaseUrl}api/students/`);
+        const response = await axios.get(`${BaseUrl}api/students/`, {
+          params: {
+            sentFrom: loggedInUser.collegeEmail  // Pass logged-in user's email to the backend
+          }
+        });
+
+        // Set students along with their last messages
         setStudents(response.data);
-        // console.log(response.data.dp);
+     
       } catch (error) {
         console.error('Error fetching students:', error);
       }
     };
 
-    fetchStudents();
-  }, []);
+    fetchStudents();  // Call the fetchStudents function on component mount
+  }, [loggedInUser.collegeEmail]);  // Re-run when loggedInUser's email changes
 
   return (
     <div className='Container h-[84vh] overflow-y-auto'>
@@ -47,13 +63,15 @@ const UserInMessContainer = () => {
       {/* Message Navbar ends */}
 
       <div className="user-list">
-        {students.map(student => (
+        {students.map(studentData => (
           <UserInMessage
-            key={student._id} // Ensure you use a unique key for each component
-     
-            dp={student.dp} // Adjust based on your actual data structure
-            name={student.name} // Adjust based on your actual data structure
-            email={student.email}
+            key={studentData.student._id} // Ensure unique key
+            dp={studentData.student.dp}    // Student's display picture
+            name={studentData.student.name} // Student's name
+            email={studentData.student.email} // Student's email
+            lastMessage={studentData.latestMessage} // The latest message exchanged
+            lastSeenOnlineStatus={studentData.student.onlineStatus}
+            lastSeenTime={studentData.student.lastSeen}
           />
         ))}
       </div>

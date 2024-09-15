@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Paper from '@mui/material/Paper';
+import CustomSyncLoader from './CustomSyncLoader';
 
 // Badge styling for online status
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -40,6 +41,7 @@ const MessageArea = (props) => {
   const [messages, setMessages] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(props.loggedInUser); // Get logged-in user from props
   const [sentTo, setSentTo] = useState(props.sentTo); // Get recipient from props
+  const [istyping,setTyping] = useState(false);
 
   // useEffect to update messages whenever props.allmessages changes
   useEffect(() => {
@@ -85,6 +87,16 @@ const MessageArea = (props) => {
           )}
         </div>
       ))}
+
+    <div className="3dots-loader ">
+         <CustomSyncLoader
+          size={15} 
+          color="#ff4458" 
+          loading={istyping} 
+          speedMultiplier={0.8} 
+          />
+    </div>
+     
     </div>
   );
 };
