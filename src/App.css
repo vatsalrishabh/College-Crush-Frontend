@@ -1,0 +1,8 @@
+/* styles.css or TruthorDare.css */
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Blurs the background behind the element */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Semi-transparent border */
+  }
+  

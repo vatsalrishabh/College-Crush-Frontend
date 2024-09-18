@@ -1,4 +1,6 @@
 import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useAuth } from "../context/loginContext";
 import InfoIcon from '@mui/icons-material/Info';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -7,6 +9,8 @@ import './Mid.css'; // Import the CSS file
 
 const Mid = () => {
   const handleRipple = (event) => {
+    const { loggedInUser } = useAuth(); //have toc continur from here
+    const { email } = useParams();
     const ripple = document.createElement('span');
     const size = Math.max(event.target.clientWidth, event.target.clientHeight);
     const rect = event.target.getBoundingClientRect();
@@ -48,12 +52,14 @@ const Mid = () => {
 
         {/* 2nd Horizontal section starts */}
         <div className="dps mb-4 flex justify-center">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKfh5YombU3zpbejYqzLMsem9bwDm7yO-6hw&s"
-            alt="Profile"
-            className="w-full h-full object-cover rounded-lg"
-          />
-        </div>
+  <img
+    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKfh5YombU3zpbejYqzLMsem9bwDm7yO-6hw&s"
+    alt="Profile"
+    className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-auto object-cover rounded-lg"
+  />
+</div>
+
+
         {/* 2nd Horizontal section ends */}
 
         {/* 3rd horizontal section starts */}

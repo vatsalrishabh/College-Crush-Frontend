@@ -15,12 +15,13 @@ import UserInMatchContainer from "./Components/UserInMatchContainer";
 import SpecificInMessContainer from "./Components/SpecificInMessContainer";
 import Stars from "./Components/Stars";
 import TruthorDare from "./Components/TruthorDare";
+import TruthorDareAnsers from "./Components/TruthorDareAnsers";
 
 function App() {
 
   const [count, setCount] = useState(0);
   const { loggedInUser } = useAuth();
-  console.log("App.jsx" +loggedInUser.isLoggedIn);
+  // console.log("App.jsx" +loggedInUser.isLoggedIn);
 
 // 
   return (
@@ -117,6 +118,23 @@ function App() {
             }
            
           />
+
+
+
+<Route
+            path="/postQue"
+            element={
+              loggedInUser.isLoggedIn?
+              <>
+                <Top />
+              <TruthorDareAnsers/>
+                <Bottom />
+              </>:<>  <LoginCanvas /></>
+            }
+           
+          />
+
+
 
 
 
