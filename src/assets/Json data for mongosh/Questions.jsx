@@ -1,4 +1,13 @@
-db.Questions.insertMany([
+db.questions.insertMany([
+
+    {
+        "questionNumber": 1, 
+        "question": "How many times have you had sex after coming to Gardencity University?", 
+        "questionBy": "",
+        "ipAddress": "",
+        "anonymous": false,
+        "timeDate": new Date()
+      },
     {
       "questionNumber": 2,
       "question": "Who is the last person you creeped on social media?",

@@ -46,12 +46,12 @@ const UserInMessage = (props) => {
           {/* Name and Last Message */}
           <div className="message-info flex-grow">
             <h2 className="text-lg font-semibold text-white">{props.name}</h2>
-            <h3 className="text-sm text-[#fe2c73]">{props.lastMessage}</h3>
+            <h3 className="text-sm text-[#fe2c73]">Click to chat</h3>
           </div>
           
           {/* Last Seen */}
           <div className="last-seen text-right">
-            <h3 className="text-xs text-[#fe5b3b]">{displayStatus}</h3>
+            <h3 className="text-xs text-[#fe5b3b]">{props.type}</h3>
           </div>
           
         </div>

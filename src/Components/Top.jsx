@@ -21,7 +21,7 @@ const Top = () => {
     };
 
     fetchLastSeen();
-    console.log(loggedInUser.collegeEmail + "top nav");
+    // console.log(loggedInUser.collegeEmail + "top nav");
   }, [loggedInUser]);
 
   // Function to toggle dropdown visibility
